@@ -5,10 +5,8 @@
 
 body {
   background-color: pink;
-  -webkit-background-size: contain;
-  -moz-background-size: contain;
-  -o-background-size: contain;
-  background-size: contain;
+  width: 100vw;
+  height: 100vw;
   margin: 0;
 }
 
@@ -31,10 +29,13 @@ video {
 }
 
 @media screen and (max-device-width: 800px) {
-        .bgvid { display: none;
-        }
+  .bgvid { 
+    display: none;
   }
+}
 
 .hidden {
-  display: none;
+  visibility: hidden;
+  position: fixed;
+
 }
