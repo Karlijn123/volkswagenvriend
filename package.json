@@ -1,0 +1,25 @@
+{
+  "name": "volkswagen-vriend",
+  "version": "1.0.0",
+  "description": "talk to your volkswagen friend to improve your daily routines in combination with self driving cars",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://Karlijn123@github.com/Karlijn123/volkswagenvriend.git"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "volkswagenfriend",
+    "googlehome"
+  ],
+  "author": "Karlijn Engels",
+  "dependencies": {
+    "express": "^4.16.3"
+  },
+  "engines": {
+    "node": "8.10.0"
+  },
+}
