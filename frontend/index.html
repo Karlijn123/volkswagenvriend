@@ -2,22 +2,19 @@
 <html>
   <head>
     <title>Volkswagen friend</title>
+    <link type="text/css" href="/css/styles.css">
+   <link rel="shortcut icon" href="#" />  
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"/>
-    <link rel="shortcut icon" href="#" />
-   <link type="text/css" href="/css/styles.css">
-    <script>
-          var socket = io();
-    </script>
     
+     
   </head>
     <body>
-      <img class="bgvid intro hidden" src="https://dailypost.files.wordpress.com/2013/08/img_8488.jpg" alt="testfoto">
     <!-- <video class="bgvid intro hidden" src="http://www.irisvanstiphout.nl/sophie/intro.m4v" playsinline muted preload="auto"></video>
     <video class="bgvid research hidden" src="http://www.irisvanstiphout.nl/sophie/research.m4v" playsinline muted preload="auto"></video> -->
   </body>
 
       <script>
-      
+        var socket  = io();
           function setStage(stage) {
 
             let notHidden = document.querySelectorAll(".bgvid:not(.hidden)");
