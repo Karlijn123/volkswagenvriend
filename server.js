@@ -38,4 +38,78 @@ var callWatchers = WatchJS.callWatchers;
 
 app.use(bodyParser.json());
 
-}
+app.post('/webhook', function (req, res) {
+
+    console.log('Request from Dialogflow received');
+
+    try {
+        if (req.body && req.body.result) {
+            var body = req.body;
+
+            if (body.result.fulfillment) {
+                console.log(body.result.fulfillment.speech);
+            }
+
+            if (body.result.action && currentAction.action != body.result.action) {
+                console.log("Updating action to: " + body.result.action);
+                currentAction.action = body.result.action;
+                res.sendStatus(200);
+            } else {
+                return res.status(400).json({
+                    status: {
+                        code: 400,
+                        failedAction: body.result.action
+                    }
+                });
+            }
+        }
+
+
+    } catch (err) {
+        console.error("Can't process request", err);
+
+        return res.status(400).json({
+            status: {
+                code: 400,
+                errorType: err.message
+            }
+        });
+    }
+});
+
+io.on('connection', function(socket){
+    console.log('a user connected');
+
+    //defining a 'watcher' for an attribute
+    watch(currentAction, "action", function(){
+
+        if(!!currentAction.action) {
+
+            switch (currentAction.action) {
+                case "intro":
+                    console.log("intro action triggered");
+                    socket.emit('intro', { description: currentAction.action});
+                    break;
+                
+                case "research":
+                    console.log("research action trigggerd!");
+                    socket.emit('research', { description: currentAction.action});
+                    break;
+
+                default:
+                    console.log(currentAction.action);
+            }
+        }
+    });
+    });
+
+// Defining a route handler / that gets called when we hit our website home.
+app.get('/', function(req, res){
+    res.sendFile(__dirname + '/frontend/index.html');
+});
+
+
+
+http.listen((process.env.PORT || 5000), function () {
+    console.log("Server started");
+});
