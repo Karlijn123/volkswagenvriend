@@ -101,7 +101,7 @@ io.on('connection', function(socket){
             }
         }
     });
-    });
+});
 
 // Defining a route handler / that gets called when we hit our website home.
 app.get('/', function(req, res){
