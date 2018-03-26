@@ -17,9 +17,14 @@
   ],
   "author": "Karlijn Engels",
   "dependencies": {
-    "express": "^4.16.3"
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "melanke-watchjs": "^1.4.3",
+    "request": "^2.85.0",
+    "request-promise-native": "^1.0.5",
+    "socket.io": "^2.0.4"
   },
   "engines": {
     "node": "8.10.0"
-  },
+  }
 }
