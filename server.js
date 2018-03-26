@@ -26,7 +26,7 @@ const request = require('request');
 const app = express();
 
 // Import HTTP server
-const http = require('http').Server(app);
+// const http = require('http').Server(app);
 
 // Import socket.io
 const io = require('socket.io')(http);
