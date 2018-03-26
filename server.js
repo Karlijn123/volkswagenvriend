@@ -84,9 +84,9 @@ io.on('connection', function(socket){
 
     //defining a 'watcher' for an attribute
     watch(currentAction, "action", function(){
-		console.log('hallo');
+	
         if(!!currentAction.action) {
-console.log('hallo2');
+			
             switch (currentAction.action) {
                 case "intro":
                     console.log("intro action triggered");
