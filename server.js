@@ -36,8 +36,6 @@ var watch = WatchJS.watch;
 var unwatch = WatchJS.unwatch;
 var callWatchers = WatchJS.callWatchers;
 
-console.log("hallo");
-
 app.use(bodyParser.json());
 
 app.post('/webhook', function (req, res) {
