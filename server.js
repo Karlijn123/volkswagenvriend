@@ -81,7 +81,7 @@ app.post('/webhook', function (req, res) {
 
 io.on('connection', function(socket){
     console.log('a user connected');
-
+    console.log('hallo');
     //defining a 'watcher' for an attribute
     watch(currentAction, "action", function(){
 
