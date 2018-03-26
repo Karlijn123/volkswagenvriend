@@ -4,8 +4,6 @@
 }
 
 body {
-/*  background: white no-repeat center center fixed;
-*/  /*background: url(http://irisvanstiphout.nl/sophie/intro.png) no-repeat center center fixed;*/
   background-color: pink;
   -webkit-background-size: contain;
   -moz-background-size: contain;
