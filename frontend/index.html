@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Volkswagen friend</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://irisvanstiphout.nl/sophie/style.css">
+    <script>
+          var socket = io();
+    </script>
+    
+  </head>
+    <body>
+    <video class="bgvid intro hidden" src="http://www.irisvanstiphout.nl/sophie/intro.m4v" playsinline muted preload="auto"></video>
+    <video class="bgvid research hidden" src="http://www.irisvanstiphout.nl/sophie/research.m4v" playsinline muted preload="auto"></video>
+  </body>
+
+      <script>
+      
+          function setStage(stage) {
+
+            let notHidden = document.querySelectorAll(".bgvid:not(.hidden)");
+
+            for (let i = 0; i < notHidden.length; ++i) {
+              notHidden[i].classList.add("hidden");
+            }
+
+            let selector = "." + stage;
+
+            document.querySelector(selector).classList.remove("hidden")
+            document.querySelector(selector).play()
+          }
+
+          socket.on('intro', function(data){
+            setStage('intro');
+          });
+
+          socket.on('research', function(data){
+            setStage('research');
+          });
+
+
+    </script>
+
+</html>
