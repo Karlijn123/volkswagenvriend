@@ -36,6 +36,8 @@ var watch = WatchJS.watch;
 var unwatch = WatchJS.unwatch;
 var callWatchers = WatchJS.callWatchers;
 
+console.log(server);
+
 server.use(bodyParser.json());
 
 server.post('/webhook', function(req, res) {
@@ -104,9 +106,9 @@ io.on('connection', function(socket){
 });
 
 // Defining a route handler / that gets called when we hit our website home.
-// server.get('/', function(req, res){
-//     res.sendFile(__dirname + '/frontend/index.html');
-// });
+server.get('/', function(req, res){
+    res.sendFile(__dirname + '/frontend/index.html');
+});
 
 
 
