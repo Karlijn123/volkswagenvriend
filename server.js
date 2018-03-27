@@ -23,10 +23,10 @@ const bodyParser = require('body-parser');
 // Import Request for HTTP requests
 const request = require('request');
 
-const app = express();
+const server = express();
 
 // Import HTTP server
-const http = require('http').Server(app);
+const http = require('http').Server(server);
 
 // Import socket.io
 const io = require('socket.io')(http);
@@ -36,9 +36,9 @@ var watch = WatchJS.watch;
 var unwatch = WatchJS.unwatch;
 var callWatchers = WatchJS.callWatchers;
 
-app.use(bodyParser.json());
+server.use(bodyParser.json());
 
-app.post('/webhook', function (req, res) {
+server.post('/webhook', function(req, res) {
 
     console.log('Request from Dialogflow received');
 
@@ -79,10 +79,10 @@ app.post('/webhook', function (req, res) {
 
 io.on('connection', function(socket){
     console.log('a user connected');
-
+    console.log(currentAction);
     //defining a 'watcher' for an attribute
     watch(currentAction, "action", function(){
-	
+		console.log('ben in watch');
         if(!!currentAction.action) {
 			
             switch (currentAction.action) {
@@ -104,7 +104,7 @@ io.on('connection', function(socket){
 });
 
 // Defining a route handler / that gets called when we hit our website home.
-app.get('/', function(req, res){
+server.get('/', function(req, res){
     res.sendFile(__dirname + '/frontend/index.html');
 });
 
