@@ -24,7 +24,7 @@ const bodyParser = require('body-parser');
 const request = require('request');
 
 const server = express();
-
+console.log(fs);
 // Import HTTP server
 const http = require('http').Server(server);
 
