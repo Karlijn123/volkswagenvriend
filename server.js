@@ -24,7 +24,7 @@ const bodyParser = require('body-parser');
 const request = require('request');
 
 const server = express();
-console.log(fs);
+
 // Import HTTP server
 const http = require('http').Server(server);
 
@@ -104,9 +104,9 @@ io.on('connection', function(socket){
 });
 
 // Defining a route handler / that gets called when we hit our website home.
-server.get('/', function(req, res){
-    res.sendFile(__dirname + '/frontend/index.html');
-});
+// server.get('/', function(req, res){
+//     res.sendFile(__dirname + '/frontend/index.html');
+// });
 
 
 
