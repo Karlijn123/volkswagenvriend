@@ -1,8 +1,10 @@
-/* -- SETUP -- */
-/*
-Code for the setup of the Volkswagenfriend Server
-Handles custom actions for a Google Home bot, through webhooks to Dialogflow
-*/
+/******************
+ * SETUP
+ *
+ * Code for the setup of the Katrien Server
+ * Handles custom actions for a Google Home bot, through webhooks to API.ai
+ ******************/
+//test
 
 // Enabling ES6 support and defining global variables
 (function(globals){
@@ -23,10 +25,10 @@ const bodyParser = require('body-parser');
 // Import Request for HTTP requests
 const request = require('request');
 
-const server = express();
+const app = express();
 
 // Import HTTP server
-const http = require('http').Server(server);
+const http = require('http').Server(app);
 
 // Import socket.io
 const io = require('socket.io')(http);
@@ -36,13 +38,11 @@ var watch = WatchJS.watch;
 var unwatch = WatchJS.unwatch;
 var callWatchers = WatchJS.callWatchers;
 
-console.log(server);
+app.use(bodyParser.json());
 
-server.use(bodyParser.json());
+app.post('/webhook', function (req, res) {
 
-server.post('/webhook', function(req, res) {
-
-    console.log('Request from Dialogflow received');
+    console.log('Request from API.ai received');
 
     try {
         if (req.body && req.body.result) {
@@ -80,33 +80,120 @@ server.post('/webhook', function(req, res) {
 });
 
 io.on('connection', function(socket){
-    console.log('a user connected');
-    console.log(currentAction);
+      console.log('a user connected');
+
     //defining a 'watcher' for an attribute
     watch(currentAction, "action", function(){
-		console.log('ben in watch');
+
         if(!!currentAction.action) {
-			
+
             switch (currentAction.action) {
                 case "intro":
                     console.log("intro action triggered");
                     socket.emit('intro', { description: currentAction.action});
                     break;
-                
+                case "start":
+                    console.log("start action triggered");
+                    socket.emit('start', { description: currentAction.action});
+                    break;
                 case "research":
                     console.log("research action trigggerd!");
                     socket.emit('research', { description: currentAction.action});
                     break;
+                case "result":
+                    console.log("result action trigggerd!");
+                    socket.emit('result', { description: currentAction.action});
+                    break;
+                case "sassy":
+                    console.log("sassy action trigggerd!");
+                    socket.emit('sassy', { description: currentAction.action});
+                    break;
+                case "joke":
+                    console.log("joke action trigggerd!");
+                    socket.emit('joke', { description: currentAction.action});
+                    break;
+                case "benefits":
+                    console.log("benefits action trigggerd!");
+                    socket.emit('benefits', { description: currentAction.action});
+                    break;
+                case "home":
+                    console.log("home action trigggerd!");
+                    socket.emit('home', { description: currentAction.action});
+                    break;
+                case "agenda":
+                    console.log("agenda action trigggerd!");
+                    socket.emit('agenda', { description: currentAction.action});
+                    break;
+                case "file":
+                    console.log("file action trigggerd!");
+                    socket.emit('file', { description: currentAction.action});
+                    break;
+                case "fysio":
+                    console.log("fysio action trigggerd!");
+                    socket.emit('fysio', { description: currentAction.action});
+                    break;
+                case "recepten":
+                    console.log("recepten action trigggerd!");
+                    socket.emit('recepten', { description: currentAction.action});
+                    break;
+                case "spongebob":
+                    console.log("spongebob action trigggerd!");
+                    socket.emit('spongebob', { description: currentAction.action});
+                    break;
+                case "conclusion":
+                    console.log("conclusion action trigggerd!");
+                    socket.emit('conclusion', { description: currentAction.action});
+                    break;
+
+
+                case "cookie":
+                    console.log("cookie action trigggerd!");
+                    socket.emit('cookie', { description: currentAction.action});
+                    break;
+                case "LookAtMenu":
+                    console.log("look at menu action triggered");
+                    socket.emit('menu', { description: currentAction.action});
+                    break;
+
 
                 default:
                     console.log(currentAction.action);
             }
         }
     });
-});
+
+
+
+    //     try {
+    //         if (req.body && req.body.result && req.body.result.action) {
+
+    //             var action = req.body.result.action
+
+    //             switch (action){
+    //                 case "cookie":
+    //                  socket.emit('testerEvent', { description: 'A custom event named testerEvent!'});
+    //             }
+    //         }
+
+    //         return res.json(
+    //         {
+
+    //         });
+
+    // } catch (err) {
+    //     console.error("Can't process request", err);
+
+    //     return res.status(400).json({
+    //         status: {
+    //             code: 400,
+    //             errorType: err.message
+    //         }
+    //     });
+    // }
+    });
 
 // Defining a route handler / that gets called when we hit our website home.
-server.get('/', function(req, res){
+app.get('/', function(req, res){
     res.sendFile(__dirname + '/frontend/index.html');
 });
 
