@@ -88,16 +88,14 @@ io.on('connection', function(socket){
         if(!!currentAction.action) {
 
             switch (currentAction.action) {
-            	case "firstdemo":
-                    console.log("firstdemo action triggered");
-                    socket.emit('firstdemo', { description: currentAction.action});
-                    break;
-
                 case "intro":
                     console.log("intro action triggered");
                     socket.emit('intro', { description: currentAction.action});
                     break;
-                
+                case "start":
+                    console.log("start action triggered");
+                    socket.emit('start', { description: currentAction.action});
+                    break;
                 case "research":
                     console.log("research action trigggerd!");
                     socket.emit('research', { description: currentAction.action});
