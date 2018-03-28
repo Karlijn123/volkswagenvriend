@@ -92,13 +92,13 @@ io.on('connection', function(socket){
                     console.log("intro action triggered");
                     socket.emit('intro', { description: currentAction.action});
                     break;
-                case "start":
-                    console.log("start action triggered");
-                    socket.emit('start', { description: currentAction.action});
-                    break;
                 case "research":
                     console.log("research action trigggerd!");
                     socket.emit('research', { description: currentAction.action});
+                    break;  
+                case "result":
+                    console.log("result action trigggerd!");
+                    socket.emit('result', { description: currentAction.action});
                     break;
                
 
