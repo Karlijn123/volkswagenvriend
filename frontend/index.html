@@ -10,9 +10,11 @@
   </head>
     <body>
       <h1>Volkswagen friend</h1>
-      <video class="bgvid intro hidden" src="https://i321797.iris.fhict.nl/bedroomv2.mp4" playsinline muted preload="auto"></video>
-    <video class="bgvid research hidden" src="https://i321797.iris.fhict.nl/687898845.mp4" playsinline muted preload="auto"></video>
-    <video class="bgvid result hidden" src="https://i321797.iris.fhict.nl/706896863.mp4" playsinline muted preload="auto"></video>
+      <video class="bgvid start hidden" src="https://i321797.iris.fhict.nl/bedroomv2.mp4" playsinline muted preload="auto"></video>
+      <video class="bgvid intro hidden" src="https://i321797.iris.fhict.nl/687898845.mp4" playsinline muted preload="auto"></video>
+      <video class="bgvid agenda hidden" src="https://i321797.iris.fhict.nl/706896863.mp4" playsinline muted preload="auto"></video>
+      <video class="bgvid temperatuur hidden" src="https://i321797.iris.fhict.nl/687898845.mp4" playsinline muted preload="auto"></video>
+      <video class="bgvid music hidden" src="https://i321797.iris.fhict.nl/706896863.mp4" playsinline muted preload="auto"></video>
   </body>
 
       <script>
@@ -26,14 +28,20 @@
             document.querySelector(selector).classList.remove("hidden")
             document.querySelector(selector).play()
           }
+          socket.on('start', function(data){
+            setStage('start');
+          });
           socket.on('intro', function(data){
             setStage('intro');
           });
-          socket.on('research', function(data){
-            setStage('research');
+          socket.on('agenda', function(data){
+            setStage('agenda');
           });
-          socket.on('result', function(data){
-            setStage('result');
+          socket.on('temperatuur', function(data){
+            setStage('temperatuur');
+          });
+          socket.on('music', function(data){
+            setStage('music');
           });
 
 

@@ -88,21 +88,27 @@ io.on('connection', function(socket){
         if(!!currentAction.action) {
 
             switch (currentAction.action) {
-                case "intro":
-                    console.log("intro action triggered");
-                    socket.emit('intro', { description: currentAction.action});
+                case "start":
+                    console.log("start action triggered");
+                    socket.emit('start', { description: currentAction.action});
                     break;
-                case "research":
-                    console.log("research action trigggerd!");
-                    socket.emit('research', { description: currentAction.action});
+                case "intro":
+                    console.log("intro action trigggerd!");
+                    socket.emit('intro', { description: currentAction.action});
                     break;  
-                case "result":
-                    console.log("result action trigggerd!");
-                    socket.emit('result', { description: currentAction.action});
+                case "agenda":
+                    console.log("agenda action trigggerd!");
+                    socket.emit('agenda', { description: currentAction.action});
+                    break;
+                case "temperatuur":
+                    console.log("temperatuur action trigggerd!");
+                    socket.emit('temperatuur', { description: currentAction.action});
+                    break;  
+                case "music":
+                    console.log("music action trigggerd!");
+                    socket.emit('music', { description: currentAction.action});
                     break;
                
-
-
                 default:
                     console.log(currentAction.action);
             }
