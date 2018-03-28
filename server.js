@@ -89,8 +89,8 @@ io.on('connection', function(socket){
 
             switch (currentAction.action) {
             	case "start":
-                    console.log("intro action triggered");
-                    socket.emit('intro', { description: currentAction.action});
+                    console.log("start action triggered");
+                    socket.emit('start', { description: currentAction.action});
                     break;
 
                 case "intro":
