@@ -42,3 +42,8 @@ video {
 .hidden {
   display: none;    
 }
+
+.fixed{
+  z-index: 999;
+  position: absolute;
+}
