@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Volkswagen friend</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
+    <script type="text/javascript">
+      var socket  = io();
+    </script>
+    <link rel="stylesheet" href="https://i321797.iris.fhict.nl/style.css">
+  </head>
+    <body>
+      <div class="car fixed">
+        <h1>Volkswagen friend</h1>
+      </div>
+      
+      <video class="bgvid start hidden" src="https://i321797.iris.fhict.nl/googlehome/googlehome_bedroom.mp4" playsinline muted preload="auto"></video>
+      <video class="bgvid intro hidden" src="https://i321797.iris.fhict.nl/687898845.mp4" playsinline muted preload="auto"></video>
+      <video class="bgvid agenda hidden" src="https://i321797.iris.fhict.nl/706896863.mp4" playsinline muted preload="auto"></video>
+      <video class="bgvid temperatuur hidden" src="https://i321797.iris.fhict.nl/687898845.mp4" playsinline muted preload="auto"></video>
+      <video class="bgvid music hidden" src="https://i321797.iris.fhict.nl/706896863.mp4" playsinline muted preload="auto"></video>
+  </body>
+
+      <script>
+        
+          function setStage(stage) {
+            let notHidden = document.querySelectorAll(".bgvid:not(.hidden)");
+            for (let i = 0; i < notHidden.length; ++i) {
+              notHidden[i].classList.add("hidden");
+            }
+            let selector = "." + stage;
+            document.querySelector(selector).classList.remove("hidden")
+            document.querySelector(selector).play()
+          }
+          socket.on('start', function(data){
+            setStage('start');
+          });
+          socket.on('intro', function(data){
+            setStage('intro');
+          });
+          socket.on('agenda', function(data){
+            setStage('agenda');
+          });
+          socket.on('temperatuur', function(data){
+            setStage('temperatuur');
+          });
+          socket.on('music', function(data){
+            setStage('music');
+          });
+
+
+    </script>
+
+</html>
