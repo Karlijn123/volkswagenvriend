@@ -59,11 +59,10 @@ video {
 }
 
 .bar{
-  
   width: 100%;
   height: 30px;
 }
-div {
+.bar, .car {
     position: relative;
     -webkit-animation: mymove 50s infinite; /* Safari 4.0 - 8.0 */
     animation: mymove 50s infinite;
